@@ -23,6 +23,7 @@ public class Exc_18
     public static Map<String,Set<String>> reverse(Map<String,String> map)
     {
         Map<String,Set<String>> reverseMap = new HashMap<>();
+        /*
         //Løber mappet igennem og gemmer valuen i en string
         //Kunne også sagtens være direkte på keys via keysettet.
         for(Map.Entry<String,String> e: map.entrySet())
@@ -41,6 +42,22 @@ public class Exc_18
             //Tilføjer entryet med det gemte set og valuen
             //som nu bliver keyen, til mappet
             reverseMap.put(value,keys);
+        }
+        return reverseMap;
+        */
+        for(Map.Entry<String,String> e: map.entrySet())
+        {
+            if(reverseMap.containsKey(e.getValue()))
+            {
+                Set<String> set1 = reverseMap.get(e.getValue());
+                set1.add(e.getKey());
+                reverseMap.put(e.getValue(),set1);
+            } else
+            {
+                Set<String> set2 = new HashSet<>();
+                set2.add(e.getKey());
+                reverseMap.put(e.getValue(),set2);
+            }
         }
         return reverseMap;
     }
